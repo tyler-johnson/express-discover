@@ -34,7 +34,7 @@ function registerService(parent, app) {
   }
 }
 
-export default function(name, app, backupPaths={}) {
+export default function(app, name, backupPaths={}) {
   if (app.serviceName) {
     throw new Error("This express app has already been configured as a service.");
   }

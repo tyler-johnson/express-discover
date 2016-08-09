@@ -5,7 +5,7 @@ import registerService from "../src/index.js";
 test("app can discover itself", function(t) {
   t.plan(2);
   let app = express();
-  registerService("testapp", app);
+  registerService(app, "testapp");
 
   t.equals(app.discover("testapp"), app, "discover() returns self");
   t.equals(app.discoverPath("testapp"), "", "discoverPath is empty string");
@@ -15,10 +15,10 @@ test("app can discover itself", function(t) {
 test("apps can discover each other", function(t) {
   t.plan(4);
   let app = express();
-  registerService("testapp", app);
+  registerService(app, "testapp");
 
   let child = express();
-  registerService("childapp", child);
+  registerService(child, "childapp");
   app.use("/childroute", child);
 
   t.equals(app.discover("childapp"), child, "app.discover() returns child");
@@ -34,7 +34,7 @@ test("app discover url accepts params", function(t) {
 
   let app = express();
   parent.use("/:name", app);
-  registerService("testapp", app);
+  registerService(app, "testapp");
 
   t.equals(app.discoverPath("testapp"), "/:name", "discoverPath without params is param string");
   t.equals(app.discoverPath("testapp", { name: "foo" }), "/foo", "discoverPath with params replaces");
@@ -44,12 +44,12 @@ test("app discover url accepts params", function(t) {
 test("apps can discover parent backup paths", function(t) {
   t.plan(1);
   let app = express();
-  registerService("testapp", app, {
+  registerService(app, "testapp", {
     backup: "/backup"
   });
 
   let child = express();
-  registerService("childapp", child);
+  registerService(child, "childapp");
   app.use("/childroute", child);
 
   t.equals(child.discoverPath("backup"), "/backup", "child discovers parent backup path");
@@ -59,16 +59,16 @@ test("apps can discover parent backup paths", function(t) {
 test("apps can discover sibling backup paths", function(t) {
   t.plan(2);
   let app = express();
-  registerService("testapp", app);
+  registerService(app, "testapp");
 
   let child1 = express();
-  registerService("child1app", child1, {
+  registerService(child1, "child1app", {
     backup1: "/backup1"
   });
   app.use("/child1route", child1);
 
   let child2 = express();
-  registerService("child2app", child2, {
+  registerService(child2, "child2app", {
     backup2: "/backup2"
   });
   app.use("/child2route", child2);

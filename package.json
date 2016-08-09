@@ -1,7 +1,7 @@
 {
   "name": "express-discover",
   "version": "0.0.0-edge",
-  "description": "Allows express apps to discover each other.",
+  "description": "Allows connected Express applications to discover each other without configuration.",
   "author": "Tyler Johnson <tyler@tylerjohnson.me>",
   "repository": {
     "type": "git",
@@ -22,10 +22,8 @@
     "autorelease-travis": "^1.2.1",
     "babel-eslint": "^6.1.2",
     "babel-plugin-external-helpers": "^6.8.0",
-    "babel-plugin-transform-async-to-generator": "^6.8.0",
     "babel-plugin-transform-es2015-destructuring": "^6.9.0",
     "babel-plugin-transform-es2015-parameters": "^6.11.4",
-    "babel-plugin-transform-object-rest-spread": "^6.8.0",
     "eslint": "^3.2.2",
     "express": "^4.14.0",
     "rollup": "^0.34.7",
@@ -33,7 +31,17 @@
     "rollup-plugin-json": "^2.0.1",
     "tape": "^4.6.0"
   },
-  "keywords": [],
+  "keywords": [
+    "express",
+    "app",
+    "discover",
+    "discovery",
+    "path",
+    "url",
+    "connected",
+    "network",
+    "service"
+  ],
   "license": "MIT",
   "files": [
     "index.js"

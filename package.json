@@ -1,7 +1,7 @@
 {
   "name": "express-discover",
   "version": "0.0.0-edge",
-  "description": "Allows express apps to discover each other.",
+  "description": "Allows connected Express applications to discover each other without configuration.",
   "author": "Tyler Johnson <tyler@tylerjohnson.me>",
   "repository": {
     "type": "git",
@@ -31,7 +31,17 @@
     "rollup-plugin-json": "^2.0.1",
     "tape": "^4.6.0"
   },
-  "keywords": [],
+  "keywords": [
+    "express",
+    "app",
+    "discover",
+    "discovery",
+    "path",
+    "url",
+    "connected",
+    "network",
+    "service"
+  ],
   "license": "MIT",
   "files": [
     "index.js"

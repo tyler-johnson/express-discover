@@ -2,12 +2,22 @@ function has(obj, key) {
   return Object.prototype.hasOwnProperty.call(obj, key);
 }
 
+function cleanPath(path) {
+  if (typeof path !== "string") {
+    return "";
+  }
+
+  path = path.split("/").map(p => p.trim()).filter(Boolean).join("/");
+  if (path) path = "/" + path;
+  return path;
+}
+
 function formatPath(path, params={}) {
   if (typeof path !== "string") {
     return "";
   }
 
-  return path.replace(/:(\w+)(\?)?/g, function (m, param, optional) {
+  return cleanPath(path).replace(/:(\w+)(\?)?/g, function (m, param, optional) {
     if (!optional && !has(params, param)) {
       return m;
     }
